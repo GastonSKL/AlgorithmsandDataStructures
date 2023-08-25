@@ -42,17 +42,17 @@ class UnionFind{
 
         if(rootX === rootY) return;
 
-        if(this.rank[rootX] > this.rank[rootY])
+        if(this.rank[rootX] > this.rank[rootY])                         //<--- Weigth. With this an path compression you almost flatten the tree in its totallity, improving performance M + N log* N
         {
-            this.rank[rootY] = rootX;
+            this.parent[rootY] = rootX;
         }
         else if(this.rank[rootX] < this.rank[rootY])
         {
-            this.rank[rootX] = rootY;
+            this.parent[rootX] = rootY;
         }
         else
         {
-            this.rank[rootY] = rootX;
+            this.parent[rootY] = rootX;
             this.rank[rootX]++;
         }
     }
